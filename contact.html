@@ -76,6 +76,10 @@
         button:hover {
             background-color: #218838;
         }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -93,9 +97,8 @@
         <section id="contact">
             <h2>Contacteer Ons</h2>
             <p>U kunt ons contacteren via het onderstaande formulier of een e-mail sturen naar <a href="mailto:w93585840@gmail.com">w93585840@gmail.com</a>.</p>
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="1582aa6f-bed5-45ed-b66d-1b435f731c62
-                ">
+            <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" onsubmit="return handleSubmit(event)">
+                <input type="hidden" name="access_key" value="1582aa6f-bed5-45ed-b66d-1b435f731c62">
             
                 <label for="name">Naam:</label>
                 <input type="text" id="name" name="name" placeholder="Uw naam" required>
@@ -107,15 +110,41 @@
                 <textarea id="message" name="message" rows="5" placeholder="Uw bericht" required></textarea>
             
                 <button type="submit">Verzenden</button>
+                <p class="error" id="errorMessage" style="display: none;">Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw.</p>
             </form>
-            
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Websiteservice. Alle rechten voorbehouden.</p>
     </footer>
+    
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Voorkomt standaard formulierverzending
+            const form = document.getElementById('contactForm');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Uw bericht is succesvol verzonden!');
+                    form.reset();
+                } else {
+                    throw new Error('Fout bij het verzenden.');
+                }
+            })
+            .catch(error => {
+                console.error('Er is een fout opgetreden:', error);
+                errorMessage.style.display = 'block';
+            });
+        }
+    </script>
 </body>
 </html>
+
 
 
 
