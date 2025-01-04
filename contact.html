@@ -93,57 +93,29 @@
         <section id="contact">
             <h2>Contacteer Ons</h2>
             <p>U kunt ons contacteren via het onderstaande formulier of een e-mail sturen naar <a href="mailto:w93585840@gmail.com">w93585840@gmail.com</a>.</p>
-            <form id="contactForm" method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="1582aa6f-bed5-45ed-b66d-1b435f731c62
+                ">
+            
                 <label for="name">Naam:</label>
                 <input type="text" id="name" name="name" placeholder="Uw naam" required>
-
+            
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" placeholder="Uw e-mailadres" required>
-
+            
                 <label for="message">Bericht:</label>
                 <textarea id="message" name="message" rows="5" placeholder="Uw bericht" required></textarea>
-
+            
                 <button type="submit">Verzenden</button>
             </form>
+            
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Websiteservice. Alle rechten voorbehouden.</p>
     </footer>
-
-    <script>
-        const form = document.getElementById("contactForm");
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault(); // Voorkomt dat de pagina opnieuw laadt
-
-            // Haal formuliergegevens op
-            const formData = {
-                name: form.name.value,
-                email: form.email.value,
-                message: form.message.value,
-            };
-
-            try {
-                // Stuur een POST-verzoek naar de serverless functie
-                const response = await fetch("/.netlify/functions/verzend", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formData),
-                });
-
-                const result = await response.json();
-                if (response.ok) {
-                    alert(result.success);
-                    form.reset(); // Reset het formulier
-                } else {
-                    alert(result.error);
-                }
-            } catch (error) {
-                alert("Er is een fout opgetreden tijdens het verzenden.");
-            }
-        });
-    </script>
 </body>
 </html>
+
 
 
