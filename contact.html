@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Neem contact met ons op voor meer informatie over onze diensten.">
+    <title>Contact - Websites Laten Maken</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #748CAB;
+            color: #0D132;
+        }
+        header {
+            background: linear-gradient(135deg, #1D2D44, #748CAB);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #1D2D44;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #748CAB;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.8rem 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #748CAB;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+        footer {
+            background: #0D132;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            color: white;
+        }
+        label {
+            display: block;
+            margin: 0.5rem 0 0.2rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid white;
+            border-radius: 5px;
+            color: blue;
+        }
+        button {
+            background-color: #28a745;
+            color: rgb(255, 255, 255);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact</h1>
+        <p>Neem contact met ons op voor meer informatie of een offerte.</p>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="diensten.html">Diensten</a>
+        <a href="over.html">Over Ons</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <section id="contact">
+            <h2>Contacteer Ons</h2>
+            <p>U kunt ons contacteren via het onderstaande formulier of een e-mail sturen naar <a href="mailto:w93585840@gmail.com">w93585840@gmail.com</a>.</p>
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="1582aa6f-bed5-45ed-b66d-1b435f731c62">
+                
+                <label for="name">Naam:</label>
+                <input type="text" id="name" name="name" placeholder="Uw naam" required>
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Uw e-mailadres" required>
+                
+                <label for="message">Bericht:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Uw bericht" required></textarea>
+                
+                <button type="submit">Verzenden</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Websiteservice. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Voorkomt standaard formulieractie
+            alert('Uw bericht is succesvol verzonden!'); // Toont melding aan gebruiker
+            this.submit(); // Verzendt het formulier na de melding
+        });
+    </script>
+</body>
+</html>
